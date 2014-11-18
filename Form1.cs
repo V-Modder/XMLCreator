@@ -113,7 +113,9 @@ namespace XMLCreator
             }
             finally
             {
-                MessageBox.Show("Vorgang abgeschlossen");
+                MessageBox.Show("Vorgang erfolgreich abgeschlossen");
+                Process.Start("explorer", "/select, \"" + Path.GetDirectoryName(txt_path.Text) + "\\update.xml" + "\"");
+                this.Close();
             }
         }
 
@@ -133,7 +135,7 @@ namespace XMLCreator
             StringBuilder s = new StringBuilder();
 
             foreach (byte b in hash)
-                s.Append(b.ToString("x2").ToLower());
+                s.Append(b.ToString("x2").ToLower());           // x2 means Hexadecimal with 2 digest
 
             return s.ToString();
         }
